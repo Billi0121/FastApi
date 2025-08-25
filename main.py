@@ -43,11 +43,11 @@ def home_page():
         )
 def greetings(
         *,
-        surname: str,        
-        age: Optional[int] = None,
-        is_staff: bool = False,
+        surname: list[str] = Query(min_length=2, max_length=20),     
+        age: Optional[int] = Query(None, gt=5, lt=99),
+        is_staff: bool = Query(False, alias='is-staff', include_in_schema=False),
         education_level: Optional[EducationLevel] = None,
-        name: str,
+        name: str = Path(min_length=2, max_length=20, title='First Name', description='Yout First Name'),
     ) -> dict[str, str]:
     """
     Приветствие пользователя:
@@ -59,7 +59,8 @@ def greetings(
     - **education_level**: уровень образования (опционально)
     """
     # return {"Hello": name.capitalize()}
-    result = ' '.join([name, surname])
+    surnames = ' '.join(surname)
+    result = ' '.join([name, surnames])
     result = result.title( )
     if age is not None:
         result += ', ' + str(age)
