@@ -8,19 +8,19 @@ import uvicorn
 app = FastAPI()
 
 
-class EducationLevel(str, Enum):    
-    SECONDARY = 'Среднее образование'
-    SPECIAL = 'Среднее специальное образование'
-    HIGHER = 'Высшее образование'
-
 class Post(BaseModel):
     title: str
     description: str | None = None
     tags: float | None = None
 
+class EducationLevel(str, Enum):    
+    SECONDARY = 'Среднее образование'
+    SPECIAL = 'Среднее специальное образование'
+    HIGHER = 'Высшее образование'
+
 @app.post(
     "/post/",
-    tags=[EducationLevel.SECONDARY],
+    tags=[EducationLevel.HIGHER],
     summary=['Post Someting']
     )
 def create_post(post: Post):
@@ -33,7 +33,7 @@ def create_post(post: Post):
     )
 def home_page():
     return {"Hello": "World"}
- 
+    
 
 @app.get(
         "/{name}", 
