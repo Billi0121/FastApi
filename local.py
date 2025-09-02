@@ -8,5 +8,13 @@ class EducationLevel(str, Enum):
 
 # print(Fruit(256).name)
 
-for fr in EducationLevel:
-    print(fr.value)
+# for fr in EducationLevel:
+#     print(fr.value)
+
+
+class Fruits(Enum):
+    APPLE = 256
+    PEAR = 156
+    BANAN = 240
+
+print(Fruits.APPLE)
