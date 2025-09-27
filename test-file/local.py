@@ -18,3 +18,4 @@ class Fruits(Enum):
     BANAN = 240
 
 print(Fruits.APPLE)
+print(Fruits.APPLE)
